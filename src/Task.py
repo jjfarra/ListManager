@@ -4,5 +4,8 @@ class Task:
         self.title = title
         self.status = "In Progress"
 
-    def change_status(self):
+    def mark_finish(self):
         self.status = "Done"
+
+    def mark_blocked(self):
+        self.status = "Blocked"

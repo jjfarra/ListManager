@@ -13,16 +13,24 @@ class TaskList:
     def clean_tasks(self):
         self.tasks.clear()
 
-    def list_tasks(self):
+    def display_tasks(self):
         str_list = []
         for idx, task in enumerate(self.tasks, start=1):
             str_list.append(f"{idx}. {task.title} - {task.status}")
+        return str_list
 
-    def mark_task(self, idx):
-        temp = self.tasks[idx]
-        temp.change_status()
-        self.tasks[idx] = temp
+    def mark_complete(self, idx):
+        temp = self.tasks[idx - 1]
+        temp.mark_finish()
+        self.tasks[idx - 1] = temp
+
+    def blocked(self, idx):
+        temp = self.tasks[idx - 1]
+        temp.mark_blocked()
+        self.tasks[idx - 1] = temp
 
     def delete_task(self, idx):
-        temp = self.tasks.pop(idx)
+        temp = self.tasks.pop(idx - 1)
         return temp
+
+

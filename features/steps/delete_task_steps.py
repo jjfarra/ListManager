@@ -26,6 +26,6 @@ def step_impl(context):
     context.del_task = del_task
 
 
-@then("@then(the title task is {title}")
+@then("the title task is {title}")
 def step_impl(context, title):
     assert title == context.del_task.title

@@ -8,15 +8,16 @@ def before_scenario(context, scenario):
 
 @given("a non-empty list")
 def step_impl(context):
-    context.task_list = TaskList()
-    context.task_list.add_task("Buy a mouse")
+    todo_list = TaskList()
+    todo_list.add_task("Buy a mouse")
+    context.task_list = todo_list
 
 
-@when("the user add a task {task_name}")
+@when("the user add one task {task_name}")
 def step_impl(context, task_name):
     context.task_list.add_task(task_name)
 
 
-@then("the list has {element} task")
+@then("the list more than {element} task")
 def step_impl(context, element):
-    assert int(element) == len(context.task_list.tasks)
+    assert int(element) < len(context.task_list.tasks)

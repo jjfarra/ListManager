@@ -11,7 +11,8 @@ if __name__ == '__main__':
         print("3. Mark a Task as complete")
         print("4. Clean the List")
         print("5. Delete a Task")
-        print("6. Exit")
+        print("6. Mark task as blocked")
+        print("7. Exit")
 
         option = int(input("Enter your choice: "))
 
@@ -20,13 +21,13 @@ if __name__ == '__main__':
             task_list.add_task(task_name)
             print("Task successfully Added")
         elif option == 2:
-            list_taks = task_list.list_tasks()
-            for task in list_taks:
+            list_tasks = task_list.display_tasks()
+            for task in list_tasks:
                 print(task)
         elif option == 3:
             task_idx = input("Enter the index of the task: ")
             if 0 < int(task_idx) >= len(task_list.tasks):
-                task_list.mark_task(int(task_idx))
+                task_list.mark_complete(int(task_idx))
                 print("Task successfully completed")
             else:
                 print("Invalid Index")
@@ -41,6 +42,13 @@ if __name__ == '__main__':
             else:
                 print("Invalid index")
         elif option == 6:
+            task_idx = input("Enter the index of the task: ")
+            if 0 < int(task_idx) >= len(task_list.tasks):
+                task_list.blocked(int(task_idx))
+                print("Task successfully completed")
+            else:
+                print("Invalid Index")
+        elif option == 7:
             print("Bye! See you soon!")
         else:
             print("Invalid Option ")
